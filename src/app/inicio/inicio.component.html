@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>BIENVENIDO</h1>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let mascota of mascotas">
+      <div class="card">
+        <img [src]="'http://localhost:4000/uploads/' + mascota.foto" (click)="verDetalles(mascota)" class="card-img-top" alt="{{ mascota.nombre }}">                     
+        <div class="card-body">
+          <h5 class="card-title">{{mascota.nombre}}</h5>
+          <p class="card-text">Especie: {{mascota.especie}}</p>
+          <p class="card-text">Raza: {{mascota.raza}}</p>
+          <p class="card-text">Edad: {{mascota.edad}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Sección de detalles de la mascota -->
+  <div *ngIf="mascotaSeleccionada" class="modal">
+   <div class="modal-content">
+    <span (click)="cerrarDetalles()" class="close">&times;</span>
+    <h2>{{mascotaSeleccionada.nombre}}</h2>
+    <img [src]="'http://localhost:4000/uploads/' + mascotaSeleccionada.foto" alt="{{
+  mascotaSeleccionada.nombre }}">
+    <p>Especie: {{mascotaSeleccionada.especie}}</p>
+    <p>Raza: {{mascotaSeleccionada.raza}}</p>
+    <p>Edad: {{mascotaSeleccionada.edad}}</p>
+    <p>Sexo: {{mascotaSeleccionada.sexo}}</p>
+    <p>Estado: {{mascotaSeleccionada.estado}}</p>
+  </div>
+ </div>
+</div>

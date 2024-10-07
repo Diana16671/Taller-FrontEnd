@@ -1,0 +1,82 @@
+<div class="container-fluid h-100">   
+<div class="row h-100 justify-content-center align-items-center">
+    <div class="col-md-6">
+        <div class="p-4 border rounded bg-white shadow-lg ">       
+            <div class="card-header text-center">      
+            <h3 class="custom-title text-info">Editar Mascota</h3>
+        </div>
+        <div class="card-body">    
+            <form (ngSubmit)="onSubmit()" #mascotaForm="ngForm">
+            <fieldset class="form-group">
+                <div class="form-group">
+                    <label class="form-label fw-italic text-primary mt-2" for="nombre"> Nombre</label>
+                    <input type="text" class="form-control bg-white shadow-sm" required [(ngModel)]="mascota.nombre" name="nombre">
+                </div>
+                <div *ngIf="mascotaForm.controls['nombre']?.invalid && mascotaForm.controls['nombre']?.touched" class="text-danger">
+                    El nombre es obligatorio.
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="form-group">
+                    <label class="form-label fw-italic text-primary mt-2" for="edad">Edad</label>
+                    <input type="number" class="form-control bg-white shadow-sm" required [(ngModel)]="mascota.edad" name="edad">
+                </div>
+                <div *ngIf="mascotaForm.controls['edad']?.invalid && mascotaForm.controls['edad']?.touched" class="text-danger">
+                    La edad es obligatoria.
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="form-group">
+                    <label class="form-label fw-italic text-primary mt-2" for="especie">Especie</label>
+                    <input type="text" class="form-control bg-white shadow-sm" required [(ngModel)]="mascota.especie" name="especie">
+                </div>
+                <div *ngIf="mascotaForm.controls['especie']?.invalid && mascotaForm.controls['especie']?.touched" class="text-danger">
+                    La especie es obligatoria.
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="form-group">
+                    <label class="form-label fw-italic text-primary mt-2" for="raza">Raza</label>
+                    <input type="text" class="form-control bg-white shadow-sm" required [(ngModel)]="mascota.raza" name="raza">
+                </div>
+                <div *ngIf="mascotaForm.controls['raza']?.invalid && mascotaForm.controls['raza']?.touched" class="text-danger">
+                    La raza es obligatoria.
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="form-group">
+                    <label class="form-label fw-italic text-primary mt-2" for="sexo">Sexo</label>
+                    <select class="form-control bg-white shadow-sm" required [(ngModel)]="mascota.sexo" name="sexo">
+                        <option value="">Seleccione</option>
+                        <option value="macho">Macho</option>
+                        <option value="hembra">Hembra</option>
+                </select>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="form-group">
+                    <label class="form-label fw-italic text-primary mt-2" for="estado">Estado</label>
+                    <select class="form-control bg-white shadow-sm" required [(ngModel)]="mascota.estado" name="estado">
+                        <option value="">Seleccione</option>
+                        <option value="disponible">Disponible</option>
+                        <option value="adoptado">Adoptado</option>
+                    </select>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="form-group">
+                    <label class="form-label fw-italic text-primary mt-2" for="imagen">Imagen</label>
+                    <input type="file" class="form-control bg-white shadow-sm" (change)="onFileSelected($event)" accept="image/*">
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="text-center">
+                    <button type="submit" class="btn btn-custom btn-primary w-100 mt-3" [disabled]="!mascotaForm.form.valid">Enviar</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+</div>

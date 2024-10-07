@@ -1,0 +1,51 @@
+<div class="contain">
+    <div class="row">
+      <div class="col-sm-12">
+        <form class="form-inline">
+          <fieldset class="form-group col-sm-11"></fieldset>
+          <fieldset class="form-group col-sm-1">
+            <a class="btn btn-primary mt-3" [routerLink]="['/mascotas/agregar']">Nueva Mascota</a>
+          </fieldset>
+        </form>
+        <br>
+        <!-- Añadido: Sección para mostrar las imágenes de las mascotas -->
+         <div *ngFor="let mascota of mascotas" class="mb-3">
+    <img [src]="mascota.foto" alt="{{ mascota.nombre }}" class="img-thumbnail"
+    style="max-width: 100px; max-height: 100px;">
+    <p>{{ mascota.nombre }}</p>
+    <button (click)="borrarMascota(mascota.id)" class="btn btn-danger">Eliminar</button>
+    </div>
+  
+        <table class="table table-striped">
+          <thead>
+            <tr class="row">
+              <th class="col-sm-1"> ID </th>
+              <th class="col-sm-2"> NOMBRE </th>
+              <th class="col-sm-1"> EDAD </th>
+              <th class="col-sm-2"> ESPECIE</th>
+              <th class="col-sm-2"> RAZA</th>
+              <th class="col-sm-1"> SEXO</th>
+              <th class="col-sm-2"> ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--Cambié ngFor para iterar directamente sobre mascotas-->
+            <tr *ngFor="let mascota of mascotas | async" class="row">
+              <td class="col-sm-1"><i>{{ mascota.id }}</i></td>
+              <td class="col-sm-2"><i>{{ mascota.nombre }}</i></td>
+              <td class="col-sm-1"><i>{{ mascota.edad }}</i></td>
+              <td class="col-sm-2"><i>{{ mascota.especie }}</i></td>
+              <td class="col-sm-2"><i>{{ mascota.raza }}</i></td>
+              <td class="col-sm-1"><i>{{ mascota.sexo }}</i></td>
+              <td class="col-sm-2">
+                <fieldset class="form-group" style="display: flex; justify-content: space-between">
+                  <a class="btn btn-info" [routerLink]="['/mascotas/editar/', mascota.id]">Editar</a>
+                  <a class="btn btn-danger" (click)="borrarMascota(mascota.id)">Borrar</a>
+                </fieldset>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
